@@ -9,21 +9,24 @@
 /* Begin PBXBuildFile section */
 		B67E12D92B9EF5BF00DFADEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E12D82B9EF5BF00DFADEA /* AppDelegate.swift */; };
 		B67E12DB2B9EF5BF00DFADEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E12DA2B9EF5BF00DFADEA /* SceneDelegate.swift */; };
-		B67E12DD2B9EF5BF00DFADEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E12DC2B9EF5BF00DFADEA /* ViewController.swift */; };
+		B67E12DD2B9EF5BF00DFADEA /* CocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E12DC2B9EF5BF00DFADEA /* CocktailViewController.swift */; };
 		B67E12E02B9EF5BF00DFADEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67E12DE2B9EF5BF00DFADEA /* Main.storyboard */; };
 		B67E12E22B9EF5C500DFADEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B67E12E12B9EF5C500DFADEA /* Assets.xcassets */; };
 		B67E12E52B9EF5C500DFADEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67E12E32B9EF5C500DFADEA /* LaunchScreen.storyboard */; };
+		B67E12ED2B9EF64600DFADEA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E12EC2B9EF64600DFADEA /* ResultViewController.swift */; };
+		B67E12F02B9EF73C00DFADEA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B67E12EF2B9EF73C00DFADEA /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B67E12D52B9EF5BF00DFADEA /* CocktailApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67E12D82B9EF5BF00DFADEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B67E12DA2B9EF5BF00DFADEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B67E12DC2B9EF5BF00DFADEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B67E12DC2B9EF5BF00DFADEA /* CocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailViewController.swift; sourceTree = "<group>"; };
 		B67E12DF2B9EF5BF00DFADEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B67E12E12B9EF5C500DFADEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B67E12E42B9EF5C500DFADEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B67E12E62B9EF5C500DFADEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B67E12EC2B9EF64600DFADEA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67E12F02B9EF73C00DFADEA /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +62,8 @@
 			children = (
 				B67E12D82B9EF5BF00DFADEA /* AppDelegate.swift */,
 				B67E12DA2B9EF5BF00DFADEA /* SceneDelegate.swift */,
-				B67E12DC2B9EF5BF00DFADEA /* ViewController.swift */,
+				B67E12DC2B9EF5BF00DFADEA /* CocktailViewController.swift */,
+				B67E12EC2B9EF64600DFADEA /* ResultViewController.swift */,
 				B67E12DE2B9EF5BF00DFADEA /* Main.storyboard */,
 				B67E12E12B9EF5C500DFADEA /* Assets.xcassets */,
 				B67E12E32B9EF5C500DFADEA /* LaunchScreen.storyboard */,
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = CocktailApp;
+			packageProductDependencies = (
+				B67E12EF2B9EF73C00DFADEA /* SnapKit */,
+			);
 			productName = CocktailApp;
 			productReference = B67E12D52B9EF5BF00DFADEA /* CocktailApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = B67E12CC2B9EF5BF00DFADEA;
+			packageReferences = (
+				B67E12EE2B9EF73B00DFADEA /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = B67E12D62B9EF5BF00DFADEA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B67E12DD2B9EF5BF00DFADEA /* ViewController.swift in Sources */,
+				B67E12DD2B9EF5BF00DFADEA /* CocktailViewController.swift in Sources */,
 				B67E12D92B9EF5BF00DFADEA /* AppDelegate.swift in Sources */,
 				B67E12DB2B9EF5BF00DFADEA /* SceneDelegate.swift in Sources */,
+				B67E12ED2B9EF64600DFADEA /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +368,26 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B67E12EE2B9EF73B00DFADEA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 6.0.0;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B67E12EF2B9EF73C00DFADEA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B67E12EE2B9EF73B00DFADEA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B67E12CD2B9EF5BF00DFADEA /* Project object */;
 }
