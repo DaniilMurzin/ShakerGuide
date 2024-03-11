@@ -50,7 +50,6 @@
 		B67E12CC2B9EF5BF00DFADEA = {
 			isa = PBXGroup;
 			children = (
-				B67E12F82B9F11DC00DFADEA /* UIViewController+Ext.swift */,
 				B67E12D72B9EF5BF00DFADEA /* CocktailApp */,
 				B67E12D62B9EF5BF00DFADEA /* Products */,
 			);
@@ -67,8 +66,10 @@
 		B67E12D72B9EF5BF00DFADEA /* CocktailApp */ = {
 			isa = PBXGroup;
 			children = (
-				B67E12F52B9F117400DFADEA /* Model */,
+				B67E12FD2B9F18FB00DFADEA /* Extensions */,
 				B67E12F22B9F114000DFADEA /* Application */,
+				B67E12FC2B9F18D700DFADEA /* Service */,
+				B67E12F52B9F117400DFADEA /* Model */,
 				B67E12F12B9F112F00DFADEA /* Controllers */,
 				B67E12E12B9EF5C500DFADEA /* Assets.xcassets */,
 				B67E12E32B9EF5C500DFADEA /* LaunchScreen.storyboard */,
@@ -98,11 +99,27 @@
 		B67E12F52B9F117400DFADEA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B67E12F62B9F11C800DFADEA /* GFerror.swift */,
-				B67E12F32B9F116900DFADEA /* NetworkManager.swift */,
 				B67E12FA2B9F124100DFADEA /* Cocktail.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B67E12FC2B9F18D700DFADEA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B67E12F32B9F116900DFADEA /* NetworkManager.swift */,
+				B67E12F62B9F11C800DFADEA /* GFerror.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B67E12FD2B9F18FB00DFADEA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B67E12F82B9F11DC00DFADEA /* UIViewController+Ext.swift */,
+			);
+			name = Extensions;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

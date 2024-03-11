@@ -6,16 +6,18 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchData(category request: String, completed: @escaping (Result<Cocktail, GFError>) -> Void) {
+    func fetchData(cocktailName request: String, completed: @escaping (Result<Cocktail, GFError>) -> Void) {
         
         
-        guard let category = request.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "https://api.api-ninjas.com/v1/quotes?category=\(category.lowercased())")
+        guard let cocktail = request.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              
+                let url = URL(string: "https://api.api-ninjas.com/v1/cocktail?name=\(cocktail.lowercased())"
+              )
+                
         else {
             completed(.failure(GFError.invalidURL))
             return
         }
-        
         
         var urlRequest = URLRequest(url: url)
         urlRequest.setValue(

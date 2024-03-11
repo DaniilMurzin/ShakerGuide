@@ -2,44 +2,91 @@ import UIKit
 import SnapKit
 
 class CocktailViewController: UIViewController {
-
-    // MARK: - Properties
-    private var cocktails = ["Vodka", "Pivo"]
-    private var filteredCocktails = [String]()
-    private var isFiltering: Bool {
-        searchController.isActive && !searchBarIsNotEmpty
-    }
-    private var searchBarIsNotEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false}
-        return text.isEmpty
-    }
     
     // MARK: - UI
     private let searchController = UISearchController(searchResultsController: nil)
     
-    private lazy var tableView: UITableView = {
-        let element = UITableView()
-        element.delegate = self
-        element.dataSource = self
+    private lazy var mainStackView: UIStackView = {
+        let element = UIStackView()
+        element.axis = .vertical
+        element.distribution = .fillEqually
+        element.spacing = 10
+        element.alignment = .center
         return element
     }()
+    
+    private lazy var cocktailName: UILabel = {
+        let element = UILabel()
+        
+        element.font = .systemFont(ofSize: 28)
+        element.numberOfLines = 0
+        return element
+    }()
+    
+    private lazy var ingredients: UILabel = {
+        let element = UILabel()
+        
+        element.font = .systemFont(ofSize: 24)
+        element.numberOfLines = 0
+        return element
+    }()
+    
+    private lazy var instructions: UILabel = {
+        let element = UILabel()
+        
+        element.font = .systemFont(ofSize: 24)
+        element.numberOfLines = 0
+        return element
+    }()
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
+    
         setupUI()
         setupConstraints()
         setupSearchController()
     }
     
     // MARK: - Private methods
+    private func updateIngredientsLabel(with ingredients: [String]) {
+        let ingredientsText = ingredients.joined(separator: "\n")
+        DispatchQueue.main.async {self.ingredients.text = ingredientsText}
+    }
+    
+    private func fetchData(_ cocktailName: String) {
+        NetworkManager.shared.fetchData(cocktailName: cocktailName) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.dismissLoadingView()
+                DispatchQueue.main.async {
+                    if !data.isEmpty {
+                        self.cocktailName.text = data[0].name
+                        self.updateIngredientsLabel(with: data[0].ingredients)
+                        self.instructions.text = data[0].instructions
+                    }
+                }
+            case .failure(let error):
+                self.dismissLoadingView()
+                print(error.rawValue)
+            }
+        }
+    }
+    
     private func setupUI(){
-        view.addSubview(tableView)
-        
+        view.backgroundColor = .white
+        view.addSubview(mainStackView)
+        [cocktailName, ingredients, instructions].forEach { mainStackView.addArrangedSubview($0)
+        }
     }
     private func setupConstraints(){
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        
+        mainStackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
         }
     }
 }
@@ -49,7 +96,11 @@ extension CocktailViewController: UISearchResultsUpdating {
     
     
     func updateSearchResults(for searchController: UISearchController) {
-        filteredContentForSearchText(searchController.searchBar.text!)
+        guard let text = searchController.searchBar.text,
+                         !text.isEmpty
+        else { return }
+        
+        fetchData(text)
     }
     
     private func setupSearchController() {
@@ -62,54 +113,5 @@ extension CocktailViewController: UISearchResultsUpdating {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
-    
-    private func filteredContentForSearchText(_ searchText: String ) {
-        
-        filteredCocktails = cocktails.filter({ cocktail in
-            cocktail.lowercased().contains(searchText.lowercased())
-        })
-        
-        tableView.reloadData()
-    }
 }
-
-// MARK: - CocktailViewController + UITableViewDelegate
-extension CocktailViewController: UITableViewDelegate {
-    
-}
-
-// MARK: - CocktailViewController + UITableViewDataSource
-extension CocktailViewController: UITableViewDataSource {
-    
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        
-        if isFiltering {
-            return filteredCocktails.count
-        }
-        return cocktails.count
-    }
-
-    
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        let cocktail: String
-        
-        if isFiltering {
-            cocktail =  filteredCocktails[indexPath.row]
-        } else {
-            cocktail = cocktails[indexPath.row]
-        }
-        
-        cell.textLabel?.text = cocktail
-        return cell
-    }
-}
-
 
